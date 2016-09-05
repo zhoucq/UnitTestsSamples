@@ -85,7 +85,7 @@
     <Compile Include="Sample1\Sample1.cs" />
     <Compile Include="Sample2\Sample2.cs" />
     <Compile Include="Sample2\TestClass.cs" />
-    <Compile Include="Sample3\Class1.cs" />
+    <Compile Include="Sample3\Sample3.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

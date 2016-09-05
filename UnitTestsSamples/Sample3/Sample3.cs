@@ -25,7 +25,7 @@ namespace UnitTestsSamples.Sample3
 
     public class UserRegService
     {
-        private ISmsSender _smsSender;
+        private readonly ISmsSender _smsSender;
         public UserRegService(ISmsSender smsSender)
         {
             _smsSender = smsSender;
@@ -44,9 +44,8 @@ namespace UnitTestsSamples.Sample3
             _smsSender.Send(mobile, "123456");
             return SendRegCodeResult.Ok;
         }
-
-
     }
+
     public enum SendRegCodeResult
     {
         Ok,

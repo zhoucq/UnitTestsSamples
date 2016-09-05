@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using Castle.Core.Internal;
+﻿using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 
@@ -65,7 +59,6 @@ namespace UnitTestsSamples.Sample2
             };
             // arrange
             var moqUserDao = new Mock<IUserDao>();
-            // moqUserDao.SetupProperty(m => m.GetById(10), user);
             moqUserDao.Setup(m => m.GetById(It.IsAny<int>())).Returns(() => user);
             var controller = new UserController(moqUserDao.Object);
             controller.UserInfo(10);

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Web.Mvc;
 
 namespace UnitTestsSamples.Sample2
@@ -15,16 +10,15 @@ namespace UnitTestsSamples.Sample2
         public string Name { get; set; }
         public int Salary { get; set; }
         public int Status { get; set; }
-
     }
 
     public interface IUserDao
     {
         User GetById(int id);
-
-        void AddUser(User user);
     }
 
+    [SuppressMessage("ReSharper", "Mvc.ViewNotResolved")]
+    [SuppressMessage("ReSharper", "Mvc.ActionNotResolved")]
     public class UserController : Controller
     {
         private readonly IUserDao _userDao;
@@ -37,12 +31,11 @@ namespace UnitTestsSamples.Sample2
         public ActionResult UserInfo(int id)
         {
             var user = _userDao.GetById(id);
-            if (user==null || user.Status != 1)
+            if (user == null || user.Status != 1)
             {
                 return RedirectToAction("Index");
             }
             return View(user);
         }
-
     }
 }
