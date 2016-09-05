@@ -15,13 +15,7 @@ namespace UnitTestsSamples.Sample3
         void Send(string mobile, string message);
     }
 
-    public class FakeSmsSender : ISmsSender
-    {
-        public void Send(string mobile, string message)
-        {
-            Console.WriteLine($"Send sms to {mobile}");
-        }
-    }
+    
 
     public class UserRegService
     {
@@ -53,6 +47,14 @@ namespace UnitTestsSamples.Sample3
         AlreadyRegistered
     }
 
+    public class FakeSmsSender : ISmsSender
+    {
+        public void Send(string mobile, string message)
+        {
+            Console.WriteLine($"Send sms to {mobile}");
+        }
+    }
+
     [TestFixture]
     public class UserRegServiceTest
     {
@@ -78,7 +80,7 @@ namespace UnitTestsSamples.Sample3
             var userRegService = new UserRegService(moqSmsSender.Object);
 
             // act
-            var result = userRegService.SendRegCode("12345");
+            var result = userRegService.SendRegCode("1390000");
 
             // asset
             Assert.AreEqual(result, SendRegCodeResult.WrongFormat);
@@ -98,7 +100,7 @@ namespace UnitTestsSamples.Sample3
 
             // asset
             Assert.AreEqual(result, SendRegCodeResult.Ok);
-            moqSmsSender.Verify(x => x.Send(mobile, It.IsAny<string>()), Times.Once);
+            moqSmsSender.Verify(x => x.Send(mobile, It.IsAny<string>()), Times.Exactly(1));
         }
     }
 }

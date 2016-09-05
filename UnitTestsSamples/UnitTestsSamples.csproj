@@ -86,6 +86,7 @@
     <Compile Include="Sample2\Sample2.cs" />
     <Compile Include="Sample2\TestClass.cs" />
     <Compile Include="Sample3\Sample3.cs" />
+    <Compile Include="Sample4\RobotTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

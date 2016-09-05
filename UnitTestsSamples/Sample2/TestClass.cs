@@ -26,6 +26,15 @@ namespace UnitTestsSamples.Sample2
         {
             // Arrange
             Mock<IUserDao> userDaoMock = new Mock<IUserDao>();
+
+            userDaoMock.Setup(x => x.GetById(20)).Returns(() => new User()
+            {
+                Id = 20,
+                Name = "user2",
+                Salary = 1000,
+                Status = 1
+            });
+
             userDaoMock.Setup(x => x.GetById(10)).Returns(() => new User
             {
                 Id = 10,
